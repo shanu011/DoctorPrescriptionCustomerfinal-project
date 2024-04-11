@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/specializationFragment">
+    <fragment
+        android:id="@+id/doctorListFragment"
+        android:name="com.example.medease.fragments.DoctorListFragment"
+        android:label="fragment_doctor_list"
+        tools:layout="@layout/fragment_doctor_list" />
+    <fragment
+        android:id="@+id/doctorsDetailsFragment"
+        android:name="com.example.medease.fragments.DoctorsDetailsFragment"
+        android:label="fragment_doctors_details"
+        tools:layout="@layout/fragment_doctors_details" />
+    <fragment
+        android:id="@+id/specializationFragment"
+        android:name="com.example.medease.fragments.SpecializationFragment"
+        android:label="fragment_specialization"
+        tools:layout="@layout/fragment_specialization" />
+    <fragment
+        android:id="@+id/myRequestsFragment"
+        android:name="com.example.medease.fragments.MyRequestsFragment"
+        android:label="fragment_my_requests"
+        tools:layout="@layout/fragment_my_requests" />
+    <fragment
+        android:id="@+id/requestDetailsFragment"
+        android:name="com.example.medease.fragments.RequestDetailsFragment"
+        android:label="fragment_request_details"
+        tools:layout="@layout/fragment_request_details" />
+    <fragment
+        android:id="@+id/myPrescriptionFragment"
+        android:name="com.example.medease.fragments.MyPrescriptionFragment"
+        android:label="fragment_my_prescription"
+        tools:layout="@layout/fragment_my_prescription" />
+</navigation>
