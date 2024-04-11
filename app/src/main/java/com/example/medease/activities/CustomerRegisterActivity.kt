@@ -30,7 +30,12 @@ class CustomerRegisterActivity : AppCompatActivity() {
                 binding.tilitemName.isErrorEnabled = true
                 binding.tilitemName.error = "Enter Name"
             }
-            else if (binding.edtemail.text.toString().isNullOrEmpty()) {
+            else  if (!isEmailValid(binding.edtitems.text.toString())) {
+                binding.tilitemName.isErrorEnabled = true
+                binding.tilitemName.error = "Enter Valid Email"
+            }
+            else
+                if (binding.edtemail.text.toString().isNullOrEmpty()) {
                 binding.tilemail.isErrorEnabled = true
                 binding.tilemail.error = "Enter Qualification"
             }
@@ -66,5 +71,9 @@ class CustomerRegisterActivity : AppCompatActivity() {
                 }
         }
         }
+    }
+    fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})")
+        return emailRegex.matches(email)
     }
 }

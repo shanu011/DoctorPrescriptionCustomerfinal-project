@@ -163,23 +163,24 @@ class DoctorsDetailsFragment : Fragment() {
         }
         var cal = Calendar.getInstance()
         binding.tvRequestDate.text =SimpleDateFormat("dd-MMM-yyyy",Locale.US).format(cal.time)
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR, year)
-            cal.set(Calendar.MONTH, monthOfYear)
-            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+        println("Today Date: ${binding.tvRequestDate.text.toString()}")
+//        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+//            cal.set(Calendar.YEAR, year)
+//            cal.set(Calendar.MONTH, monthOfYear)
+//            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+//
+//            val myFormat = "dd-MMM-yyyy" // mention the format you need
+//            val sdf = SimpleDateFormat(myFormat, Locale.US)
+//            binding.tvRequestDate.text = sdf.format(cal.time)
 
-            val myFormat = "dd-MMM-yyyy" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            binding.tvRequestDate.text = sdf.format(cal.time)
 
-        }
-        binding.tvRequestDate.setOnClickListener {
-            Toast.makeText(requireContext(), "datepicker clicked", Toast.LENGTH_SHORT).show()
-            DatePickerDialog(requireContext(), dateSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)).show()
-        }
+//        binding.tvRequestDate.setOnClickListener {
+//            Toast.makeText(requireContext(), "datepicker clicked", Toast.LENGTH_SHORT).show()
+//            DatePickerDialog(requireContext(), dateSetListener,
+//                cal.get(Calendar.YEAR),
+//                cal.get(Calendar.MONTH),
+//                cal.get(Calendar.DAY_OF_MONTH)).show()
+//        }
         binding.imgCustomer.setOnClickListener {
             checkPermissions()
 

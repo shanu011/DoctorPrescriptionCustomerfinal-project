@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ktx.auth
@@ -26,10 +27,14 @@ class CustomerLoginActivity : AppCompatActivity() {
             startActivity(Intent(this,CustomerRegisterActivity::class.java))
         }
 
+
         binding.btnsave.setOnClickListener {
             if (binding.edtemail.text.isNullOrEmpty()) {
                 binding.tilemail.isErrorEnabled = true
                 binding.tilemail.error = "Enter Email"
+            } else if (!isEmailValid(binding.edtemail.text.toString())) {
+                binding.tilemail.isErrorEnabled = true
+                binding.tilemail.error = "Enter Valid Email"
             } else if (binding.edtPassword.text.isNullOrEmpty()) {
                 binding.tilPassword.isErrorEnabled = true
                 binding.tilPassword.error = "Enter password"
@@ -67,6 +72,26 @@ class CustomerLoginActivity : AppCompatActivity() {
                 }
             }
         }
+        binding.tvForgetPassword.setOnClickListener {
+            if(binding.edtemail.text.isNullOrEmpty()){
+                binding.tilemail.error = "Enter Email"
+            }else  if (!isEmailValid(binding.edtemail.text.toString())) {
+                binding.tilemail.isErrorEnabled = true
+                binding.tilemail.error = "Enter Valid Email"
+            }else{
+                mAuth.sendPasswordResetEmail(binding.edtemail.text.toString()).addOnCompleteListener {
+                    if(it.isSuccessful){
+                        Toast.makeText(this,"Mail Sent", Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(this,"NetWork Issue", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
 
+    fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})")
+        return emailRegex.matches(email)
     }
 }

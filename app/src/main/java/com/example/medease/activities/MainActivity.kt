@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         navController = findNavController(R.id.fragment)
 
-        db.collection("UserProfile").document(auth.currentUser?.uid.toString()).get().addOnCompleteListener {document->
-            if(document.isSuccessful){
-                userModel = document.result.toObject(CustomerRegisterModel::class.java) as CustomerRegisterModel
-                println("UserModerl: $userModel")
-            }
-        }
+//        db.collection("UserProfile").document(auth.currentUser?.uid.toString()).get().addOnCompleteListener {document->
+//            if(document.isSuccessful){
+//                userModel = document.result.toObject(CustomerRegisterModel::class.java) as CustomerRegisterModel
+//                println("UserModerl: $userModel")
+//            }
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
